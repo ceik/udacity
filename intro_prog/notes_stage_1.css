@@ -1,22 +1,25 @@
 body {
     font-family: Arial;
-    background-color: #4C4C4C;
+    background-color: #4c4c4c;
     color: white;
     max-width: 700px;
 }
 
-:link {color: #8EEEFF}
-:visited {color: #8EEEFF}
+:link {
+    color: #8eeeff
+}
+
+:visited {
+    color: #8eeeff
+}
 
 .header {
     text-align: center;
 }
 
-.lesson {
-}
 
 .keyword {
-    color: #FB7A08
+    color: #fb7a08
 }
 
 .code {
