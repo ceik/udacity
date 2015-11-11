@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+<h2 class="header">Notes Stage 1</h2>
+<div class="lesson">
+    <h3 class="header">Lesson 1.1 - The Basics of the Web and HTML</h3>
+    <div class="lesson-body">
+        <p>
+            The WWW is mainly made up out of <span class="keyword">HTML
+            (Hypertext Markup Language) documents</span>, that are linked
+            together via Hyperlinks. Browsers sends requests to servers via the
+            internet and the HTTP protocol. Servers answer with documents,
+            often in HTML.
+        </p>
+        <p>
+            <span class="keyword">HTML Components</span> are mainly Text
+            Content and Markup.
+        </p>
+        <p>
+            <span class="keyword">Markup elements</span> usually have an opening
+            and closing tag. The part between the tags is called
+            <span class="keyword">content</span>. If and element consists of
+            only one tag, e.g. the image tag, it is called a
+            <span class="keyword">void element</span>. Markup elements can be
+            either <span class="keyword">inline</span> (e.g.
+            <span class="code">&lt;span></span>) or
+            <span class="keyword">block</span> (e.g.
+            <span class="code">&lt;div></span>). Block tags
+            create a <span class="keyword">box</span> around the content.
+        </p>
+        <p>
+            For an extensive <span class="keyword">HTML reference</span> see
+            <a class="link"
+               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference">
+            here.</a>
+        </p>
+    </div>
+
+    <h3 class="header">Lesson 1.2 - Creating a Structured Document</h3>
+    <div>
+        <p>
+            Elements that are not void are defined by an opening and closing tag.
+            The content and can be empty, text, or another element. Tags can
+            have <span class="keyword">attributes</span> with values. Examples
+            of attributes are class or href, e.g.:
+            <span class="code">&lt;a class="link"
+                href="http://www.google.com"></span>
+        </p>
+        <p>
+            HTML tags are being turned into elements by the browser. Elements
+            can have other elements inside them, which leads to a
+            <span class="keyword">tree-like structure of boxes</span>
+            (because all elements are boxes). This structure is defined by the
+            <span class="keyword">Document Object Model</span> or DOM. The DOM
+            is the standard convention for representing and interacting with
+            elements in HTML.
+        </p>
+        <p>
+            When thinking about the layout of a page it is essential to think
+            in terms of boxes, because every element on the page will be a box.
+        </p>
+    </div>
+
+    <h3 class="header">Lession 1.3 - Adding CSS Style and HTML Structure</h3>
+    <div>
+        <p>
+            <span class="keyword">CSS</span> (Cascading Style Sheets) are an
+            important addition to HTML. They provide an efficient way of
+            changing the style of the page.
+        </p>
+        <p>
+            In order to use CSS a few things should be kept in mind. The head
+            of the html document needs to contain a link to the .css file in
+            this format:
+            <span class="code">&lt;link href="notes_stage_1.css" rel="stylesheet"></span>.
+            Also it is very handy to give html elements a
+            <span class="keyword">class</span> attribute and give the same class
+            to similar elements.
+        </p>
+        <p>
+            For an extensive <span class="keyword">CSS reference</span> see
+            <a class="link"
+               href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">
+            here.</a>
+        </p>
+        <p>
+            HTML does not have <span class="keyword">escape characters</span>.
+            Instead ASCII code needs to be used for certain characters, e.g.
+            &lt;, &amp;, and &quot;. ASCII codes have the following
+            structure: &#38;#num; where num stands for a number or an
+            alternative abbreviation. E.g. the num/abbreviation for the
+            characters above are 60/lt, 38/amp, and 34/quot respectively.
+        </p>
+        <p>
+            A full <span class="keyword">ASCII reference table</span> in HTML
+            can be found
+            <a class="link"
+               href="http://www.anglesanddangles.com/asciichart.php">
+               here</a>.
+
+        </p>
+        <p>
+            There are two pages that can <span class="keyword">validate</span>
+            and check HTML and CSS code:<br>
+            <a class="link"
+               href="https://validator.w3.org/#validate_by_input">
+               HTML Check</a><br>
+            <a class="link"
+               href="https://jigsaw.w3.org/css-validator/#validate_by_input">
+               CSS Check</a>
+        </p>
+    </div>
+</div>
+</body>
+{% endblock %}
