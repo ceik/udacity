@@ -117,8 +117,12 @@ class Guestbook(webapp2.RequestHandler):
                     identity=users.get_current_user().user_id(),
                     email=users.get_current_user().email())
 
+# Not creating a notification for empty responses since message boxes don't seem to be
+# supported by GAE (or would at the least add dependencies) and adding additional
+# pages just for error messages seems a bit stupid.
         greeting.content = self.request.get('content')
-        greeting.put()
+        if not greeting.content == '':
+            greeting.put()
 
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/guestbook?' + urllib.urlencode(query_params))
