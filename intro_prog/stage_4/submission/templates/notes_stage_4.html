@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="header">Notes IPND - Stage 4</h2>
+<div class="lesson">
+    <h3 class="header">Servers</h3>
+    <div class="lesson-body">
+        <p>
+            Nearly the whole Internet is made up of <span class="keyword">
+            servers</span> that work according to the <span class="keyword">
+            client-server model</span>. Servers are programs that often run on
+            dedicated machines. There are many different <span class="keyword">
+            types of servers</span>: Application servers, mail servers, or web
+            servers. The latter wait for and respond to client requests that come
+            via the <span class="keyword">HTTP protocol</span>, like GET or POST.
+        </p>
+        <table>
+            <tr>
+                <td><b>Get Requests</b></td>
+                <td><b>Post Requests</b></td>
+            </tr>
+            <tr>
+                <td>Parameter in URL</td>
+                <td>Parameter in Body</td>
+            </tr>
+            <tr>
+                <td>Used for fetching documents</td>
+                <td>Used for uploading data</td>
+            </tr>
+            <tr>
+                <td>Limited by maximum URL length of browser</td>
+                <td>Not affected by max URL length of browser</td>
+            </tr>
+            <tr>
+                <td>Can be cached</td>
+                <td>Can not be cached</td>
+            </tr>
+            <tr>
+                <td>Should not change server</td>
+                <td>Can change server</td>
+            </tr>
+        </table>
+    </div>
+    <h3 class="header">Input Validation</h3>
+    <div class="lesson-body">
+        <p>
+            Data that is submitted by users via <span class="keyword">forms
+            </span> imbedded into the site needs to be validated. For example
+            html code could be submitted via the form, which might break the
+            site (or worse). One way of validating is to <span class="keyword">
+            escape</span> all characters that could interact with the code.
+            Most webapp frameworks have a global setting to do this.
+        </p>
+    </div>
+    <h3 class="header">Templates</h3>
+    <div class="lesson-body">
+        <p>
+            Webapplications can and should use <span class="keyword">HTML
+            templates</span> in order to avoid repitition. Together with
+            control flow structures they can be used by the application to
+            dynamically construct the HTML code for the site that the user sees.
+            Google App Engine uses the <span class="keyword">jinja2 library
+            </span>, which lets you create pages from a template file and a
+            dictionary.
+        </p>
+    </div>
+    <h3 class="header">Databases &amp; Google App Engine Datastore</h3>
+    <div class="lesson-body">
+        <div class="keyword">
+            ACID:
+        </div>
+        <ul>
+            <li>Atomicity: All parts of a transaction succeed or fail together</li>
+            <li>Consistency: The database will always be consistent</li>
+            <li>Isolation: No transaction can interfere with anothers</li>
+            <li>Durability: Once the transaction is comitted, it won't be lost</li>
+        </ul>
+        <div class="keyword">
+            Google App Engine Datastore:
+        </div>
+        <p>
+            The <span class="keyword">datastore IDs</span> are made up of
+            strings or numbers. It contains <span class="keyword">entities
+            </span> whose columns are not fixed. Every entity has an id and is
+            defined by <span class="keyword">parent-ancestor relationships
+            </span>.
+        </p>
+    </div>
+</div>
+{% endblock %}
