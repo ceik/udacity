@@ -40,14 +40,27 @@
                 <td>Can change server</td>
             </tr>
         </table>
+        <p>
+            The server response can come in different forms. Some common ones
+            are HTML, JSON, or XML documents. HTML documents can either be
+            static or they can be dynamically created by the webapp running on
+            the server. JSON and XML are usually returned by APIs and not meant
+            to be consumed by a browser.
+        </p>
     </div>
     <h3 class="header">Input Validation</h3>
     <div class="lesson-body">
         <p>
             Data that is submitted by users via <span class="keyword">forms
-            </span> imbedded into the site needs to be validated. For example
-            html code could be submitted via the form, which might break the
-            site (or worse). One way of validating is to <span class="keyword">
+            </span> imbedded into the site needs to be validated. This should
+            be done because the html code submitted via the form could break
+            or compromise the security of the site (and it's users). Also html
+            code could end up being printed on the site by the browser, because
+            the data submitted via the form closes a tag or otherwise interacts
+            with the html code of the site.
+        </p>
+        <p>
+            One way of validating is to <span class="keyword">
             escape</span> all characters that could interact with the code.
             Most webapp frameworks have a global setting to do this.
         </p>
@@ -62,6 +75,11 @@
             Google App Engine uses the <span class="keyword">jinja2 library
             </span>, which lets you create pages from a template file and a
             dictionary.
+        </p>
+        <p>
+            Avoiding repitition leads to time savings from writing and
+            debugging your code. This is because (surprise!) you need to write
+            and debug less code.
         </p>
     </div>
     <h3 class="header">Databases &amp; Google App Engine Datastore</h3>
