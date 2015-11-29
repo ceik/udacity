@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="header">Notes IPND - Stage 5</h2>
+<div class="lesson">
+    <h3 class="header">APIs</h3>
+    <div class="lesson-body">
+        <p>
+            <span class="keyword">Application Programming Interfaces</span> or
+            APIs specify a way in which a programm can interact with a website
+            or webservice in a more machine-friendly way (than reading an HTML
+            file). While APIs can come in many form, <span class="keyword">SOAP
+            </span>and <span class="keyword">REST</span> are two very
+            popular standards. In both protocols <span class="keyword">HTTP
+            methods</span> are used for communication. Data is often returned
+            in JSON or XML format. E.g. Twitter, Github, or Asana provide REST
+            APIs.
+        </p>
+        <p>
+            <span class="keyword">HTTP responses</span> are being sent back by
+            the server as a reply to an HTTP request. Each response consists of
+            a <span class="keyword">header</span> and a <span class="keyword">
+            body</span>. While the body contains the actual content of the
+            response, e.g. the HTML or JSON document that was requested, the
+            header contains various meta data that can be very useful. The most
+            important part of the header is the <span class="keyword">status
+            code</span> and the <span class="keyword">reason phrase</span> that
+            goes with it. Notable examples are 200 - OK or 404 - Not Found.
+            In general any code starting with 2 indicates success, while 4
+            indicates client errors (e.g. 404: Asking for something that
+            doesn't exist), and 5 indicates server errors.
+        </p>
+        <p>
+            Sources APIs General:
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/Application_programming_interface">
+            APIs</a>
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/Representational_state_transfer">
+            REST APIs</a>
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/SOAP">
+            SOAP APIs</a>
+        </p>
+        <p>
+            Sources HTTP Methods:
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">
+            HTTP Methods</a>
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">
+            HTTP Status Codes</a>
+            <a class="link"
+               href="http://www.checkupdown.com/status/error1.html">
+            HTTP Error Definitions</a>
+        </p>
+        <p>
+            For a good Python package, see:
+            <a class="link"
+               href="http://docs.python-requests.org/en/latest/">
+            Requests</a>
+        </p>
+    </div>
+    <h3 class="header">Recursion</h3>
+    <div class="lesson-body">
+        <p>
+            In computer science <span class="keyword">recursion</span> refers
+            to a method where the solution to a problem depends on the solutions
+            to smaller instances of the same problem. This stands opposed to
+            <span class="keyword">iteration</span>, which means the repition of
+            a block of code (e.g. via a for- or while-loop). Some functional
+            languages, like Haskell, do not have loops and rely entirely on
+            recursion to solve iterative problems.
+        </p>
+        <p>
+            In Python recursion usually looks like "calling a function within
+            itself". A simple example problem for this is computing the factorial.
+            Recursive functions have at least one <span class="keyword"> base
+            case </span>, for which the function simply computes and outcome.
+            In the case of the factorial this would be 0! = 1. For all other
+            cases, the <span class="keyword">recursive cases</span>, the
+            function calls itself. E.g. n! = n(n-1)! for n > 0 for our
+            factorial example.
+        </p>
+        <p>
+            In order to prevent an <span class="keyword">infinite loop</span>
+            it is imperative that either the base case is reached at some point,
+            or that a stopping condition is included in the function. An
+            example use case for the latter would be a function that calculates
+            the number pi.
+        </p>
+        <p>
+            Another interesting application of recursion are
+            <span class="keyword">recursive data structures</span>. These are
+            structures that can can grow dynamically during the execution of a
+            program. For example linked lists or tree structures fit this
+            definition.
+        </p>
+        <p>
+            Sources:
+            <a class="link"
+               href="https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/recursion">
+            Khan Academy: Recursive Algorithms</a>
+            <a class="link"
+               href="https://en.wikipedia.org/wiki/Recursion_(computer_science)">
+            Recursion</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

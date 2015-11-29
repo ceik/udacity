@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+    <body>
+        {% for author, greeting_text in zipper %}
+            <b>{{author}}</b>
+            <blockquote>{{greeting_text}}</blockquote>
+        {% endfor %}
+        <hr>
+        {% if img_url %}
+        	<img class="map" src="{{img_url}}">
+        {% endif %}
+
+        <form action="/sign?{{sign_query_params}}" method="post">
+            <div><textarea name="content" rows="3" cols="60"></textarea></div>
+            <div><input type="submit" value="Sign Guestbook"></div>
+        </form>
+        <hr>
+        <form>Guestbook name:
+            <input value="{{guestbook_name}}" name="guestbook_name">
+            <input type="submit" value="switch">
+        </form>
+        <a href="{{url}}">{{url_linktext}}</a>
+    </body>
+</html>
+{% endblock %}

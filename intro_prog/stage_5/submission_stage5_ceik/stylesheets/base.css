@@ -1,0 +1,28 @@
+body {
+    font-family: Arial;
+    background-color: #4c4c4c;
+    color: white;
+    max-width: 700px;
+}
+
+:link {
+    color: #8eeeff
+}
+
+:visited {
+    color: #8eeeff
+}
+
+.header {
+    text-align: center;
+}
+
+
+.keyword {
+    color: #fb7a08
+}
+
+.code {
+    background-color: #798014;
+    font-style: italic;
+}
