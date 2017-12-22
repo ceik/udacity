@@ -1,0 +1,20 @@
+.title {
+	background-color: #33BEBE;
+	margin-bottom: 20px;
+}
+
+.description {
+	color:red;
+	margin-left: 30px;
+}
+
+.app {
+	display: flex;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+} 
