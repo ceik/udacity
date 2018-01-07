@@ -11,6 +11,7 @@
 
 
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 
 [class*="fontawesome-"]:before {
     font-family: 'fontawesome', sans-serif;
@@ -22,6 +23,13 @@
 
 * {
     font-family: 'Raleway', sans-serif;
+    font-size: 8px;
+}
+
+@media screen and (min-width: 600px) {
+  * {
+    font-size: 12px;
+  }
 }
 
 body {
@@ -71,14 +79,19 @@ hr {
     margin-top: 20px;
 }
 
+img {
+    max-width: 100%;
+}
+
 .project-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding: 0.5em;
 }
 
 .project-title {
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 300;
     color: #2d3c49;
     text-align: center;
