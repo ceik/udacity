@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Basic Blog</h1>
+
+    <hr>
+
+    {% if post.created_by.key() == user.key() %}
+        <form method="post">
+            <label>
+                <div>subject</div>
+                <input type="text" name="subject" value="{{post.subject}}">
+            </label>
+
+            <label>
+                <div>content</div>
+                <textarea name="content">{{post.content}}</textarea>
+            </label>
+
+            <div class="error">{{error}}</div>
+
+            <input type="submit">
+        </form>
+        <hr>
+        <div>
+            <a href="http://udacity-fsnd-47213.appspot.com/blog/{{post.key().id()}}">Cancel edit & go back<a>
+        </div>
+    {% else %}
+        <div>
+            Naughty you! You can't edit other peoples posts! <a href="http://udacity-fsnd-47213.appspot.com/blog/{{post.key().id()}}">Go back<a> to view the post.
+        </div>
+    {% endif %}
+{% endblock %}

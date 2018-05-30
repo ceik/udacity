@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if success %}
+        <div>
+            You have successfully deleted your comment.
+            Please click <a href="https://udacity-fsnd-47213.appspot.com/blog/{{comment.post.key().id()}}">here<a> to go back to the post.
+        </div>
+    {% else %}
+        <div>
+            You can not delete comments left by other users.
+            Please click <a href="https://udacity-fsnd-47213.appspot.com/blog/{{comment.post.key().id()}}">here<a> to go back to the post.
+        </div>
+    {% endif %}
+{% endblock %}

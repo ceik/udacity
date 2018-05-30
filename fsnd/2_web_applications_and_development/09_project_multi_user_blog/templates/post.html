@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Basic Blog</h1>
+
+    <div>
+        <a href="http://udacity-fsnd-47213.appspot.com/blog">Back to Mainpage<a>
+    </div>
+
+    <hr>
+
+    <div>
+        <div>{{post.subject}}</div>
+        <pre>{{post.content}}</pre>
+        <div>The vote balance of this post is: {{post.votes}}</div>
+        <div>
+            Logged in users can <a href="http://udacity-fsnd-47213.appspot.com/blog/upvote/{{post.key().id()}}">Upvote<a> or
+            <a href="http://udacity-fsnd-47213.appspot.com/blog/downvote/{{post.key().id()}}">Downvote<a>
+        </div>
+    </div>
+
+    <div>
+        If you're the author, you can edit this post <a href="http://udacity-fsnd-47213.appspot.com/blog/edit/{{post.key().id()}}">here<a>.
+    </div>
+    <div>
+        Go <a href="http://udacity-fsnd-47213.appspot.com/blog/newcomment/{{post.key().id()}}">here<a> to leave a comment.
+    </div>
+
+    <hr>
+
+    <h3>Comments</h3>
+
+    {% for comment in comments %}
+        <div>
+            <div>
+                Created by {{comment.created_by.name}} on {{comment.created_at.strftime('%a, %d %b %Y, %H:%M')}} UTC
+            </div>
+            <pre>{{comment.content}}</pre>
+            {% if comment.created_at.replace(microsecond=0) != comment.updated_at.replace(microsecond=0) %}
+                <div>
+                    This comment was last edited by the author on {{post.updated_at.strftime('%a, %d %b %Y, %H:%M')}} UTC
+                </div>
+            {% endif %}
+            <div>
+                If you're the author, you can edit this comment <a href="http://udacity-fsnd-47213.appspot.com/blog/editcomment/{{comment.key().id()}}">here<a>.
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

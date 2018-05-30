@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Basic Blog</h1>
+
+    {% if upvote %}
+        {% if cheater %}
+            <div>You can't upvote your own posts. Where is the honor in that? Go stand in a corner and be ashamed!</div>
+        {% elif repeat_vote %}
+            <div>You have already upvoted this post. Please go <a href="https://duckduckgo.com/?q=memory+loss+prevention&ia=web">here<a> for advice.</div>
+        {% else %}
+            <div>Thanks, your upvote has been counted.</div>
+        {% endif %}
+    {% else %}
+        {% if cheater %}
+            <div>What sort of person would downvote their own posts? Highly unusual. Your behavior will be reported to all relevant internet-monopolists.</div>
+        {% elif repeat_vote %}
+            <div>You have already downvoted this post. Please go <a href="https://duckduckgo.com/?q=memory+loss+prevention&ia=web">here<a> for advice.</div>
+        {% else %}
+            <div>
+                Thanks, your downvote has been counted. In our defense, we are merely a platform with extremely strong editorial powers.
+                Therefore we obviously don't have any control about the crap people post on this blog.
+                We hope that the content didn't offend you too much and that you still clicked on the ads.
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

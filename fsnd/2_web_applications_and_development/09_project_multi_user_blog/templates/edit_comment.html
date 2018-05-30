@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Basic Blog</h1>
+
+    <hr>
+
+    {% if user and comment.created_by.key() == user.key() %}
+        <form method="post">
+            <label>
+                <div>content</div>
+                <textarea name="content">{{comment.content}}</textarea>
+            </label>
+
+            <div class="error">{{error}}</div>
+
+            <input type="submit">
+        </form>
+        <hr>
+        <div>
+            <a href="http://udacity-fsnd-47213.appspot.com.appspot.com/blog/delcomment/{{comment.key().id()}}">Delete Comment<a>
+        </div>
+        <div>
+            <a href="http://udacity-fsnd-47213.appspot.com/blog/{{comment.post.key().id()}}">Cancel edit & go back<a>
+        </div>
+    {% else %}
+        <div>
+            Naughty you! You can't edit other peoples comments! <a href="http://udacity-fsnd-47213.appspot.com/blog/{{comment.post.key().id()}}">Go back<a> to view the post.
+        </div>
+    {% endif %}
+{% endblock %}

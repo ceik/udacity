@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Signup</h2>
+    <form method="post">
+        Username
+        <input type="text" name="username" value={{username}}>
+        {{username_error_message}}
+        <br>
+        Password
+        <input type="password" name="password">
+        {{upper_pw_error_message}}
+        <br>
+        Verify Password
+        <input type="password" name="verify">
+        {{lower_pw_error_message}}
+        <br>
+        Email (optional)
+        <input type="text" name="email" value={{user_email}}>
+        {{email_error_message}}
+        <br>
+        <input type="Submit">
+    </form>
+    <div>
+        <a href="http://udacity-fsnd-47213.appspot.com/blog">Back to Main Page<a>
+    </div>
+    <div>
+        Already have an account? <a href="http://udacity-fsnd-47213.appspot.com/blog/login">Log In<a> instead!
+    </div>
+{% endblock %}
