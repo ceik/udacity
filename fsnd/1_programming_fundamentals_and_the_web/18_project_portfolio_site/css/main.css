@@ -1,4 +1,4 @@
-port url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 [class*="fontawesome-"]:before {
@@ -97,7 +97,8 @@ img {
     margin-right: auto;
 }
 
-.contact-me, .page-source {
+.contact-me,
+.page-source {
     font-size: 1.5em;
     font-weight: 200;
     color: #2d3c49;
