@@ -13,3 +13,7 @@ If Python3 is also installed, make sure Python2 is used by default for dev_appse
 To deploy locally run `dev_appserver.py .` in the directory of the project.
 
 To deploy to Google App Engine, run `gcloud app deploy app.yaml index.yaml` in the directory of the project. This will deploy to the project selected when setting up gcloud on your machine.
+
+## Config
+
+Create a file called `config.py` containing a variable `SECRET` and set SECRET to a random long string.

@@ -32,19 +32,20 @@
                     Created by {{post.created_by.name}} on {{post.created_at.strftime('%a, %d %b %Y, %H:%M')}} UTC
                 </div>
                 <pre>{{post.content}}</pre>
+
                 {% if post.created_at.replace(microsecond=0) != post.updated_at.replace(microsecond=0) %}
                     <div>
                         This post was last edited by the author on {{post.updated_at.strftime('%a, %d %b %Y, %H:%M')}} UTC
                     </div>
-                    <div>
-                        The vote balance of this post is: {{post.votes}}
-                    </div>
-                    <div>
-                        Logged in users can <a href="http://udacity-fsnd-47213.appspot.com/blog/upvote/{{post.key().id()}}">Upvote<a> or
-                        <a href="http://udacity-fsnd-47213.appspot.com/blog/downvote/{{post.key().id()}}">Downvote<a>
-                    </div>
-
                 {% endif %}
+
+                <div>
+                    The vote balance of this post is: {{post.votes}}
+                </div>
+                <div>
+                    Logged in users can <a href="http://udacity-fsnd-47213.appspot.com/blog/upvote/{{post.key().id()}}">Upvote<a> or
+                    <a href="http://udacity-fsnd-47213.appspot.com/blog/downvote/{{post.key().id()}}">Downvote<a>
+                </div>
             </div>
             <hr>
         {% endfor %}
