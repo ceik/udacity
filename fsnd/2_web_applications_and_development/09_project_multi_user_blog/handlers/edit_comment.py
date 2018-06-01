@@ -17,7 +17,10 @@ class EditCommentHandler(Handler):
         user = self.get_user()
         content = self.request.get("content")
 
-        if content:
+        if comment.created_by.key() != user.key():
+            self.redirect("/blog/login")
+
+        elif content:
             comment.content = content
             comment.put()
 

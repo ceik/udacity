@@ -15,7 +15,10 @@ class NewPostHandler(Handler):
         subject = self.request.get("subject")
         content = self.request.get("content")
 
-        if subject and content:
+        if not user:
+            self.redirect("/blog/login")
+
+        elif subject and content:
             new_post = Posts(subject=subject, content=content,
                              created_by=user)
             new_post.put()

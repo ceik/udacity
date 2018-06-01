@@ -16,8 +16,12 @@ class EditPostHandler(Handler):
         post = Posts.get_by_id(int(post_id))
         subject = self.request.get("subject")
         content = self.request.get("content")
+        user = self.get_user()
 
-        if subject and content:
+        if post.created_by.key() != user.key():
+            self.redirect("/blog/login")
+
+        elif subject and content:
             post.subject = subject
             post.content = content
             post.put()
