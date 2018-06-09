@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Menu Item</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        <h1>New Menu Item</h1>
+
+        <form action="{{url_for('new_menu_item', restaurant_id=restaurant_id)}}" method="post">
+            <p>Name:</p>
+            <input type="text" size="30" name="name">
+            <p>Description:</p>
+            <input type="text" size="30" name="description">
+            <p>Price:</p>
+            <input type="text" size="30" name="price">
+            <p>Course:</p>
+            <input type="radio" name="course" value="Appetizer"><label for="Appetizer">Appetizer</label><br>
+            <input type="radio" name="course" value="Entree"><label for="Entree">Entree</label><br>
+            <input type="radio" name="course" value="Dessert"><label for="Dessert">Dessert</label><br>
+            <input type="radio" name="course" value="Beverage"><label for="Beverage">Beverage</label><br>
+            <input type="submit" value="Create">
+        </form>
+    </body>
+</html>
