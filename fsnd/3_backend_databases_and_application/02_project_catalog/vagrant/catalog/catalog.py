@@ -363,6 +363,20 @@ def new_categorization(product_name):
                                categories=categories)
 
 
+@app.route('/products_JSON')
+def products_json():
+    session = DBSession()
+    products = session.query(Products).all()
+    return jsonify(products=[p.serialize for p in products])
+
+
+@app.route('/categorization_JSON')
+def catalog_json():
+    session = DBSession()
+    categorization = session.query(ProductsCategories).all()
+    return jsonify(categorization=[pc.serialize for pc in categorization])
+
+
 def get_user_id(email):
     session = DBSession()
     try:

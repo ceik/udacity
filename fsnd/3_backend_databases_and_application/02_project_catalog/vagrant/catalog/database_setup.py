@@ -20,9 +20,9 @@ class Users(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-           'id': self.id,
-           'name': self.name,
-           'email': self.email,
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
         }
 
 
@@ -37,9 +37,8 @@ class Categories(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-           'id': self.id,
-           'name': self.name,
-           'parent': self.parent,
+            'id': self.id,
+            'name': self.name,
         }
 
 
@@ -58,12 +57,12 @@ class Products(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-           'id': self.id,
-           'name': self.name,
-           'description': self.description,
-           'price_cents': self.price_cents,
-           'created_at': self.created_at,
-           'created_by': self.created_by,
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price_cents': self.price_cents,
+            'created_at': self.created_at,
+            'created_by': self.created_by,
         }
 
 
@@ -80,9 +79,10 @@ class ProductsCategories(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-           'id': self.id,
-           'name': self.name,
-           'parent': self.parent,
+            'product_id': self.product_id,
+            'product_name': self.product.name,
+            'category_id': self.category_id,
+            'name': self.category.name,
         }
 
 
