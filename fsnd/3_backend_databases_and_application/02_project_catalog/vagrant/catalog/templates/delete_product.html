@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-12">
+            <h2>Delete Product</h2>
+            Are you sure that you want to delete this product? This can not be reversed!
+            <div class="padding-bottom"></div>
+            <form action="#" method = "post">
+                <button type="submit" class="btn btn-danger" id="submit" type="submit">
+                    <span class="glyphicon glyphicon-trash aria-hidden="true"> Delete</span>
+                </button>
+            </form>
+            <div class="padding-bottom"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

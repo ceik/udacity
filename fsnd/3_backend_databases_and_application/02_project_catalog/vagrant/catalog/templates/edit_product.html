@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-12">
+            <h2>Edit Product</h2>
+            <br>
+            <form action="#" method = "post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type ="text" class="form-control" maxlength="100" value="{{default_name}}" name="name">
+                    <div class="padding-bottom"></div>
+                    <label for="name">Description:</label>
+                    <input type ="text" class="form-control" maxlength="100" value="{{default_description}}" name="description">
+                    <div class="padding-bottom"></div>
+                    <label for="name">Price:</label>
+                    <input type ="text" class="form-control" maxlength="100" value="{{default_price}}" name="price">
+                    <div class="padding-bottom"></div>
+                    <button type="submit" class="btn btn-success" id="submit" type="submit">
+                        <span class="glyphicon glyphicon-ok aria-hidden="true"> Save!</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-12">
+            <h2>Edit Categories</h2>
+            <br>
+            {% if categories %}
+                {% for cat in categories %}
+                    {{cat.category.name}}
+                    <a class="btn btn-sm btn-danger" href="{{url_for('delete_categorization', product_name=product.name, product_category_id=cat.id)}}">
+                        <span class="glyphicon glyphicon-trash aria-hidden="true"> Delete Categorization</span>
+                    </a>
+                    <div class="padding-bottom"></div>
+                    <br>
+                {% endfor %}
+            {% endif %}
+
+            <div class="padding-bottom"></div>
+
+            <a class="btn btn-sm btn-success" href="{{url_for('new_categorization', product_name=product.name)}}">
+                <span class="glyphicon glyphicon-plus aria-hidden="true"> Add Categorization</span>
+            </a>
+            <div class="padding-bottom"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

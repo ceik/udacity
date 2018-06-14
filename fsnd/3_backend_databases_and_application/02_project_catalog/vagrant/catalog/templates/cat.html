@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-3">
+            <h2>{{cat.name}}</h2>
+            {% if subcats %}
+                {% for subcat in subcats %}
+                    <div class="link-box">
+                        <a class="cat-link" href="{{url_for('cat_page', cat_name=subcat.name)}}">{{subcat.name}}</a>
+                        <br>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-md-1">
+            <hr class="vertical"/>
+        </div>
+        <div class="col-md-8">
+            <h2>{{cat.name}} Items</h2>
+            {% if last_products %}
+                {% for pd in last_products %}
+                    <div class="link-box">
+                        <a class="pd-link" href="{{url_for('product_page', product_name=pd.name)}}">{{pd.name}}</a>
+                        <br>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="padding-bottom"></div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

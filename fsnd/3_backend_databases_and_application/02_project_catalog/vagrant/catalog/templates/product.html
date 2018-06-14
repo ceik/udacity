@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-12">
+            <h2>{{product.name}}</h2>
+
+            <div class="product-desc">
+                Description: {{product.description}}
+                <br>
+                <br>
+                Price: ${{product.price_cents|int/100}}
+            </div>
+
+            {% if 'username' in session %}
+                <div class="link-box">
+                    <a class="btn btn-sm btn-warning" href="{{url_for('edit_product', product_name=product.name)}}">
+                        <span class="glyphicon glyphicon-edit aria-hidden="true"> Edit Product</span>
+                    </a>
+                    |
+                    <a class="btn btn-sm btn-warning" href="{{url_for('edit_categories', product_name=product.name)}}">
+                        <span class="glyphicon glyphicon-edit aria-hidden="true"> Edit Categorization</span>
+                    </a>
+                    |
+                    <a class="btn btn-sm btn-danger" href="{{url_for('delete_product', product_name=product.name)}}">
+                        <span class="glyphicon glyphicon-trash aria-hidden="true"> Delete</span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

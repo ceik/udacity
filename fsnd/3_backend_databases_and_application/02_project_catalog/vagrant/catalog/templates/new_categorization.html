@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row main-box">
+        <div class="col-md-12">
+            <h2>Create New Categorizations</h2>
+            <br>
+
+            {% if categories %}
+                <form action="#" method = "post">
+                    <div class="form-group">
+                        {% for cat in categories %}
+                            <input type="checkbox" name="category" value="{{cat.id}}">
+                            <label for="category1">{{cat.name}}</label>
+                            <br>
+                        {% endfor %}
+
+                        <button type="submit" class="btn btn-success" id="submit" type="submit">
+                            <span class="glyphicon glyphicon-plus aria-hidden="true"> Add!</span>
+                        </button>
+                        <div class="padding-bottom"></div>
+                        <br>
+                    </div>
+                </form>
+            {% endif %}
+
+            <div class="padding-bottom"></div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
