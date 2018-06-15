@@ -1,3 +1,13 @@
+"""
+    File name: database_setup.py
+    Author: Christian Eik
+    Date created: 2018-06-10
+    Date last modified: 2018-06-15
+    Python Version: 2.7
+
+    Create the database and tables for the catalog project.
+"""
+
 import datetime
 
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
@@ -10,6 +20,14 @@ Base = declarative_base()
 
 
 class Users(Base):
+    """
+    users table with the following columns:
+
+        id = Column(Integer, primary_key=True)
+        name = Column(String(250), nullable=False)
+        email = Column(String(250), nullable=False)
+    """
+
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
@@ -27,6 +45,14 @@ class Users(Base):
 
 
 class Categories(Base):
+    """
+    categories table with the following columns:
+
+        id = Column(Integer, primary_key=True)
+        name = Column(String(250), nullable=False)
+        parent_id = Column(Integer, ForeignKey('categories.id'))
+    """
+
     __tablename__ = 'categories'
 
     id = Column(Integer, primary_key=True)
@@ -43,6 +69,19 @@ class Categories(Base):
 
 
 class Products(Base):
+    """
+    products table with the following columns:
+
+        id = Column(Integer, primary_key=True)
+        name = Column(String(250), nullable=False)
+        description = Column(String(500))
+        price_cents = Column(Integer, nullable=False)
+        created_at = Column(DateTime, default=datetime.datetime.utcnow)
+        created_by = Column(Integer, ForeignKey('users.id'))
+
+    created_by establishes a relationship to the users table.
+    """
+
     __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True)
@@ -63,10 +102,26 @@ class Products(Base):
             'price_cents': self.price_cents,
             'created_at': self.created_at,
             'created_by': self.created_by,
+            'creator_name': self.creator.name,
+            'creator_email': self.creator.email,
         }
 
 
 class ProductsCategories(Base):
+    """
+    products table with the following columns:
+
+        id = Column(Integer, primary_key=True)
+        product_id = Column(Integer, ForeignKey('products.id'))
+        category_id = Column(Integer, ForeignKey('categories.id'))
+
+    product_id and category_id establish a relationship to the products and
+    categories table respectively.
+
+    This table provides a many-to-many relationship between products and
+    categories.
+    """
+
     __tablename__ = 'products_categories'
 
     id = Column(Integer, primary_key=True)
@@ -74,6 +129,8 @@ class ProductsCategories(Base):
     product = relationship(Products)
     category_id = Column(Integer, ForeignKey('categories.id'))
     category = relationship(Categories)
+    created_by = Column(Integer, ForeignKey('users.id'))
+    creator = relationship(Users)
 
     @property
     def serialize(self):
@@ -82,7 +139,10 @@ class ProductsCategories(Base):
             'product_id': self.product_id,
             'product_name': self.product.name,
             'category_id': self.category_id,
-            'name': self.category.name,
+            'category_name': self.category.name,
+            'created_by': self.created_by,
+            'creator_name': self.creator.name,
+            'creator_email': self.creator.email,
         }
 
 
