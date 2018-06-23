@@ -82,22 +82,6 @@ var ViewModel = function() {
         };
     };
 
-    // Filter Functionality
-    this.filterTerm = ko.observable("");
-
-    this.filteredLocationList = ko.computed(function() {
-        var filter = self.filterTerm().toLowerCase();
-        if (filter === "") {
-            return self.locationList();
-        } else {
-            var f = ko.utils.arrayFilter(self.locationList(), function(location) {
-                return location.title().toLowerCase().indexOf(filter) != -1;
-            });
-            self.addMarkers(f);
-            return f;
-        }
-    });
-
     // Add Markers
     this.addMarkers = function(locationArray) {
         if (self.markers) {
@@ -112,6 +96,23 @@ var ViewModel = function() {
         });
         self.markers.addTo(map);
     };
+
+    // Filter Functionality
+    this.filterTerm = ko.observable("");
+
+    this.filteredLocationList = ko.computed(function() {
+        var filter = self.filterTerm().toLowerCase();
+        if (!filter || filter === "") {
+            self.addMarkers(self.locationList());
+            return self.locationList();
+        } else {
+            var filteredLocations = ko.utils.arrayFilter(self.locationList(), function(location) {
+                return location.title().toLowerCase().indexOf(filter) != -1;
+            });
+            self.addMarkers(filteredLocations);
+            return filteredLocations;
+        }
+    });
 
     this.addMarkers(self.filteredLocationList());
 
