@@ -26,6 +26,10 @@ var Location = function(data) {
     this.latLng = ko.observable(data.latLng);
 };
 
+var leafletLoadError = function() {
+    alert('test');
+};
+
 var ViewModel = function() {
     var self = this;
     this.wikiEntries = ko.observableArray([]);
@@ -47,7 +51,8 @@ var ViewModel = function() {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox.streets'
+        id: 'mapbox.streets',
+        errorTileUrl: 'img/error-code.jpeg'
     });
 
     layer.addTo(map);
@@ -138,7 +143,6 @@ var ViewModel = function() {
     // images to be used) or highlighting it via another shape (which I am doing below).
     this.highlightMarker = function(data) {
         return function() {
-            console.log(data.latLng());
             if (self.circle) {
                 self.circle.remove();
             }
