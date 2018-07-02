@@ -53,3 +53,14 @@ body {
 #sidebar.sidebarToggled {
     left: 0px;
 }
+
+@keyframes fade {
+  from { opacity: 0.2; }
+}
+
+.blinking {
+    animation-duration: 1s;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    /*animation: fade 1s infinite alternate;*/
+}

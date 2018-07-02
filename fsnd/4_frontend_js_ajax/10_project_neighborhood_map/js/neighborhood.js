@@ -59,7 +59,7 @@ var ViewModel = function() {
 
     // Load Wikipedia Data
     this.setWikiData = function(title) {
-        return function() {
+        // return function() {
             var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + title + '&format=json&callback=wikiCallback';
             self.wikiEntries([]);
             self.wikiHeader("Wikipedia Articles about " + title + ":");
@@ -84,6 +84,24 @@ var ViewModel = function() {
                     clearTimeout(wikiRequestTimeout);
                 }
             });
+        // };
+    };
+
+    this.toggleBlink = function(location) {
+        self.markers.eachLayer(function (marker) {
+            L.DomUtil.removeClass(marker._icon, "blinking");
+        });
+        self.markers.eachLayer(function (marker) {
+            if (marker.getLatLng().lat === L.latLng(location.latLng()).lat && marker.getLatLng().lng === L.latLng(location.latLng()).lng) {
+                L.DomUtil.addClass(marker._icon, "blinking");
+            }
+        });
+    };
+
+    this.locationClick = function(location) {
+        return function() {
+            self.toggleBlink(location);
+            self.setWikiData(location.title());
         };
     };
 
@@ -95,8 +113,14 @@ var ViewModel = function() {
             self.markers = L.layerGroup();
         }
         locationArray.forEach(function(location) {
-            var marker = L.marker(location.latLng()).bindPopup(location.title());
-            marker.on('click', self.setWikiData(location.title()));
+            var marker = L.marker(location.latLng(), {
+                icon: L.icon({
+                    iconUrl: 'https://unpkg.com/leaflet@1.3.1/dist/images/marker-icon.png',
+                    iconAnchor: [12, 41],
+                    popupAnchor: [0, -41]
+                })
+            }).bindPopup(location.title());
+            marker.on('click', self.locationClick(location));
             self.markers.addLayer(marker);
         });
         self.markers.addTo(map);
@@ -135,23 +159,6 @@ var ViewModel = function() {
     this.toggleSidebar = function() {
         self.visibilityToggle(!self.visibilityToggle());
         map.invalidateSize();
-    };
-
-    // Highlight Marker
-    // With leaflet it is not possible to manipulate the marker itself. The options
-    // I found were removing and replacing it with a custom marker (allows different
-    // images to be used) or highlighting it via another shape (which I am doing below).
-    this.highlightMarker = function(data) {
-        return function() {
-            if (self.circle) {
-                self.circle.remove();
-            }
-            self.circle = L.circle(data.latLng(), {
-                color: 'red',
-                radius: 100
-            });
-            self.circle.addTo(map);
-        };
     };
 
 };

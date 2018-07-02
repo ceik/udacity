@@ -22,7 +22,7 @@
             <div>Filter</div>
             <input type="search" data-bind="textInput: filterTerm">
             <ul data-bind="foreach: filteredLocationList">
-                <li data-bind="text: title, click: $parent.highlightMarker($data), click: $parent.setWikiData($data.title())"></li>
+                <li data-bind="text: title, click: $parent.locationClick($data)"></li>
             </ul>
             <br>
             <br>
